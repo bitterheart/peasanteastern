@@ -1,0 +1,32 @@
+import com.openkm.core.*;
+import com.openkm.api.*;
+import java.io.*;
+import com.openkm.module.db.stuff.DbSessionManager;
+import java.util.logging.*;
+ 
+String token = DbSessionManager.getInstance().getSystemToken();
+OKMDocument document = OKMDocument.getInstance();
+OKMFolder folder = OKMFolder.getInstance();
+Logger logger=Logger.getLogger("archive_printouts.bsh");
+
+public void autoImport(String okmPath, File fldpath){
+    try {
+        for(File file:fldpath.listFiles()){
+            try{
+                logger.finest("working on file "+file);                    
+                long length = file.length();
+                Thread.sleep(1000);
+                if (file.length() > length) continue;  // Skip file this time
+                document.createSimple(token, okmPath + file.getName(), new FileInputStream(file));
+                logger.fine("uploaded "+file.getName());
+                file.delete();
+            }catch(Exception e){
+                logger.severe("Exception: " + e);
+            }
+        }
+    }catch (Exception e) {
+        logger.severe("Exception: " + e);
+    }
+}
+
+autoImport("/okm:root/printouts/", new File("/home/Yc6hR2VEpBdiFT/temp/printouts"));

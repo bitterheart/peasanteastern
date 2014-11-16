@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process-definition xmlns="urn:jbpm.org:jpdl-3.2" name="document">
+  <start-state name="start">
+    <transition to="loose"></transition>
+  </start-state>
+  <task-node name="loose">
+    <task name="file">
+      <assignment actor-id="yRn3hdT86VsmaT"/>
+    </task>
+    <transition name="file" to="filed"/>
+  </task-node>
+  <state name="filed">    
+    <timer duedate="2 years" transition="2toBeArchived">
+    </timer>
+    <transition name="2toBeArchived" to="toBeArchived"/>
+  </state>
+  <task-node name="toBeArchived">
+    <task name="archive">
+      <assignment actor-id="yRn3hdT86VsmaT"/>
+    </task>
+    <transition name="archive" to="archived"/>
+  </task-node>
+  <state name="archived">
+    <timer duedate="10 years" transition="2toBeDestroyed">
+    </timer>
+    <transition name="2toBeDestroyed" to="toBeDestroyed"/>
+  </state>
+  <task-node name="toBeDestroyed">
+    <task name="destroy">
+      <assignment actor-id="yRn3hdT86VsmaT"/>
+    </task>
+    <transition name="destroy" to="destroyed"/>
+  </task-node>
+  <end-state name="destroyed">
+  </end-state>
+</process-definition>
