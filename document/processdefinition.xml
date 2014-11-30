@@ -12,7 +12,7 @@
   <state name="binded">
     <timer duedate="2 weeks" transition="2BeFiledTrans">
     </timer>
-    <transistion name="2BeFiledTrans" to="2BeFiledTask"/>
+    <transition name="2BeFiledTrans" to="2BeFiledTask"/>
   </state>
   <task-node name="2BeFiledTask">
     <task name="file">
