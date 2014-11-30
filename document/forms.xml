@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE workflow-forms PUBLIC "-//OpenKM//DTD Workflow Forms 2.1//EN" "http://www.openkm.com/dtd/workflow-forms-2.1.dtd">
 <workflow-forms>
+  <workflow-form task="bind">
+    <input label="section" name="folder" type="text"/>
+    <button name="bind" label="Bind" transition="bind"/>
+  </workflow-form>
   <workflow-form task="file">
     <input label="Folder" name="folder" type="text"/>
     <button name="file" label="File" transition="file"/>
