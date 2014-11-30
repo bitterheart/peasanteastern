@@ -10,22 +10,24 @@
     <transition name="file" to="binded"/>
   </task-node>
   <state name="binded">
-    <timer duedate="2 weeks" transition="2BeFiledTrans">
-    </timer>
-    <transition name="2BeFiledTrans" to="2BeFiledTask"/>
+    <timer duedate="2 weeks" transition="2BeBoxedTrans"/>
+    <transition name="2BeBoxedTrans" to="2BeBoxedTask"/>
   </state>
-  <task-node name="2BeFiledTask">
-    <task name="file">
+  <task-node name="2BeBoxedTask">
+    <task name="box">
       <assignment actor-id="yRn3hdT86VsmaT"/>
     </task>
-    <transition name="file" to="filed"/>
+    <transition name="box" to="boxed"/>
   </task-node>
+  <state name="boxed">
+    <timer duedate="2 month" transition="2BeBoxedState"/>
+    <transition name="2BeFiledTrans" to="2BeFiledTask"/>
+  </state>
   <state name="filed">    
-    <timer duedate="2 years" transition="2BeArchivedTrans">
-    </timer>
+    <timer duedate="2 years" transition="2BeArchivedTrans"/>
     <transition name="2BeArchivedTrask" to="2BeArchivedTask"/>
   </state>
-  <task-node name="toBeArchivedTask">
+  <task-node name="2BeArchivedTask">
     <task name="archive">
       <assignment actor-id="yRn3hdT86VsmaT"/>
     </task>
@@ -34,7 +36,7 @@
   <state name="archived">
     <timer duedate="20 years" transition="2BeDestroyedTrans">
     </timer>
-    <transition name="2BeDestroyed" to="2BeDestroyedTask"/>
+    <transition name="2BeDestroyedTrans" to="2BeDestroyedTask"/>
   </state>
   <task-node name="toBeDestroyedTask">
     <task name="destroy">

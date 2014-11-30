@@ -2,15 +2,19 @@
 <!DOCTYPE workflow-forms PUBLIC "-//OpenKM//DTD Workflow Forms 2.1//EN" "http://www.openkm.com/dtd/workflow-forms-2.1.dtd">
 <workflow-forms>
   <workflow-form task="bind">
-    <input label="section" name="folder" type="text"/>
+    <input label="bindlabel" name="bindlabel" type="text"/>
     <button name="bind" label="Bind" transition="bind"/>
   </workflow-form>
+  <workflow-form task="box">
+    <input label="boxlabel" name="boxlabel" type="text"/>
+    <button name="box" label="Box" transition="box"/>
+  </workflow-form>
   <workflow-form task="file">
-    <input label="Folder" name="folder" type="text"/>
+    <input label="filelabel" name="filelabel" type="text"/>
     <button name="file" label="File" transition="file"/>
   </workflow-form>
   <workflow-form task="archive">
-    <input label="Box" name="box" type="text"/>
+    <input label="archivelabel" name="archivelabel" type="text"/>
     <button name="archive" label="Archive" transition="archive"/>
   </workflow-form>
   <workflow-form task="destroy">
