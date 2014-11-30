@@ -17,9 +17,9 @@ then
         if [ -f ${FILE} ] && ! [[ $(lsof | grep ${FILE}) ]]
         then
             (
-                TEMPFILE=$(mktemp)
-                NEWFILE=$(mktemp ${HOME}/temp/scans/$(basename ${FILE}).XXXXXXXXXXXXXX.PDF)
                 flock --exclusive 9
+                TEMPFILE=$(mktemp /tmp/$(basename ${FILE}).XXXXXXXXXXXXXXX.PDF)
+                NEWFILE=$(mktemp ${HOME}/temp/scans/$(basename ${FILE}).XXXXXXXXXXXXXX.PDF)
                 convert ${FILE} ${TEMPFILE}
                 mv ${TEMPFILE} ${NEWFILE}
                 rm ${FILE}
